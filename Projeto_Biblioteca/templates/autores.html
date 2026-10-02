@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<h2>Autores</h2>
+
+<form action="/autores/cadastrar" method="POST">
+
+    <input
+        type="text"
+        name="nome"
+        placeholder="Nome do autor"
+        required
+    >
+
+    <button type="submit">Cadastrar</button>
+
+</form>
+
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Ação</th>
+    </tr>
+
+    {% for autor in autores %}
+
+    <tr>
+        <td>{{ autor.id_autor }}</td>
+        <td>{{ autor.nome }}</td>
+
+        <td>
+            <a href="/autores/excluir/{{ autor.id_autor }}">
+                Excluir
+            </a>
+        </td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

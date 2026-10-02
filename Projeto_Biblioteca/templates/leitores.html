@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<h2>Leitores</h2>
+
+<form action="/leitores/cadastrar" method="POST">
+
+    <input
+        type="text"
+        name="nome"
+        placeholder="Nome do leitor"
+        required
+    >
+
+    <input
+        type="email"
+        name="email"
+        placeholder="E-mail"
+    >
+
+    <button type="submit">Cadastrar</button>
+
+</form>
+
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Ação</th>
+    </tr>
+
+    {% for leitor in leitores %}
+
+    <tr>
+
+        <td>{{ leitor.id_leitor }}</td>
+        <td>{{ leitor.nome }}</td>
+        <td>{{ leitor.email }}</td>
+
+        <td>
+            <a href="/leitores/excluir/{{ leitor.id_leitor }}">
+                Excluir
+            </a>
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}
